@@ -31,8 +31,8 @@ jobs:
       - name: Echo
         run: echo $PATH
 
-      - name: Mage Build Linux
-        if: matrix.os == 'ubuntu-latest'
+      - name: Mage Build Windows
+        if: matrix.os == 'windows-latest'
         uses: magefile/mage-action@v1
         with:
           version: latest
