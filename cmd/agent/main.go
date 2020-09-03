@@ -9,4 +9,5 @@ import (
 func main() {
 	fmt.Println("hello, world")
 	robotgo.MouseClick("left", true)
+	robotgo.KeyTap("k")
 }

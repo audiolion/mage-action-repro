@@ -33,5 +33,5 @@ jobs:
         uses: magefile/mage-action@v1
         with:
           version: latest
-          args: -d ./cmd/bootstrap/ -w . build:windows
+          args: -v -d ./cmd/bootstrap/ -w . build:windows
           workdir: ${{ env.GITHUB_WORKSPACE }}
