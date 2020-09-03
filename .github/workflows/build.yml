@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ubuntu-latest]
+        os: [windows-latest]
 
     steps:
       - name: Checkout code
@@ -36,5 +36,5 @@ jobs:
         uses: magefile/mage-action@v1
         with:
           version: latest
-          args: -d ./cmd/bootstrap/ -w . build:linux
+          args: -d ./cmd/bootstrap/ -w . build:windows
           workdir: ${{ env.GITHUB_WORKSPACE }}
