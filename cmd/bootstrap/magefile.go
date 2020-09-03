@@ -15,7 +15,7 @@ type Build mg.Namespace
 func (Build) Windows() error {
 	env := map[string]string{
 		"GOOS":   "windows",
-		"GOARCH": "amd64",
+		"GOARCH": "386",
 	}
 
 	err := sh.RunWith(env, "go", "build", "-o", "agent-linux", "-i", "./cmd/agent")
