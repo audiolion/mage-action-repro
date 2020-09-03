@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  build:
+    name: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout code
+        id: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # need a full checkout for `git describe`
+
+      - name: Install Go 1.x
+        id: go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.14
+
+      - name: Echo
+        run: echo $PATH
+
+      - name: Mage Build Linux
+        if: matrix.os == 'ubuntu-latest'
+        uses: magefile/mage-action@v1
+        with:
+          version: latest
+          args: -d ./cmd/bootstrap/ -w . build:echo
+          workdir: ${{ env.GITHUB_WORKSPACE }}
